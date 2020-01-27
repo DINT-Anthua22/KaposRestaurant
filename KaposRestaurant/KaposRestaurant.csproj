@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ComandosPersonalizados.cs" />
     <Compile Include="Model\CATEGORIA.cs">
       <DependentUpon>KaposRestaurantBd.tt</DependentUpon>
     </Compile>
