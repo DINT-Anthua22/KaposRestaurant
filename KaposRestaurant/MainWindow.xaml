@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KaposRestaurant"
+        xmlns:viewAG2="clr-namespace:KaposRestaurant.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Window.Resources>
+        <Style TargetType="TabItem">
+            <Setter Property="Width" Value="150"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="ContenedorPrincipalGrid">
+        <TabControl>
+            <TabItem Header="CATEGORIAS CARTA">
+
+            </TabItem>
+            <TabItem Header="CARTA GENERAL">
+                <viewAG2:CRUDVIew/>
+            </TabItem>
+            <TabItem Header="CONSULTAR PEDIDOS">
+
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
