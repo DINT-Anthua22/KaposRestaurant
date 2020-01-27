@@ -91,7 +91,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KaposRestaurantBd.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Services\Class1.cs" />
+    <Compile Include="Services\BBDDService.cs" />
     <Compile Include="ViewModel\Class1.cs" />
     <Compile Include="View\Class1.cs" />
     <Page Include="MainWindow.xaml">
@@ -109,7 +109,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
