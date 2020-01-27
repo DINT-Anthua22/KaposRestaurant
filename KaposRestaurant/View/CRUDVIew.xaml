@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="KaposRestaurant.View.CRUDVIew"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KaposRestaurant.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="crudButtons">
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="Height" Value="50"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="ContenedorPrincipalGrid" Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="CRUDStackPanel" Orientation="Vertical" VerticalAlignment="Center">
+
+            <Button Style="{StaticResource crudButtons}" x:Name="AñadirElementoButton" Content="Añadir Elemento a la Carta"/>
+            <Button Style="{StaticResource crudButtons}" x:Name="ModificarElementoButton" Content="Modificar Elemento de la Carta"/>
+            <Button Style="{StaticResource crudButtons}" x:Name="EliminarElementoButton" Content="Eliminar Elemento de la Carta"/>
+
+        </StackPanel>
+
+        <GroupBox x:Name="CRUDGroupBox" Grid.Column="1" Margin="10px">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Content="Seleccione Categoría"/>
+                    <ComboBox Grid.Column="1" Grid.Row="0" x:Name="CategoriasCRUDComboBox" Width="300" Margin="10"></ComboBox>
+
+                    <Label Grid.Column="0"  Grid.Row="1" Content="Nombre del Elemento:"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" x:Name="NombreElementoTextBox" Width="300"/>
+
+                    <Label Grid.Column="0" Grid.Row="2" Content="Nombre del Elemento:"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" x:Name="DescripcionElementoTextBox" Width="300"/>
+
+                    <Label Grid.Column="0" Grid.Row="3" Content="Precio del Elemento:"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" x:Name="PrecioElementoTextBox" Width="300"/>
+
+                    <Label Grid.Column="0" Grid.Row="4" Content="Seleccionar imagen:"/>
+
+                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="ImagenElementoTextBox" Width="300"/>
+                    <Button Grid.Column="2" Grid.Row="4" x:Name="SeleccionImagenElementoButton" Content="..." Width="30" Margin="5" Height="18"/>
+
+                    <Image x:Name="ImagenElementoImage" Grid.Column="2" Grid.RowSpan="4" Source="{Binding}"></Image>
+
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="AceptarCambiosButton" Content="Aceptar" Margin="5" Width="100"/>
+                    <Button x:Name="CancelarCambiosButton" Content="Cancelar" Margin="5" Width="100"/>
+                </StackPanel>
+
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>
