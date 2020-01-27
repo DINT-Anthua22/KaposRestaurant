@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIAS">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImagenCategoriaURL" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="COMANDAS">
+          <Key>
+            <PropertyRef Name="IdComanda" />
+          </Key>
+          <Property Name="IdComanda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaComanda" Type="date" Nullable="false" />
+          <Property Name="Servida" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ELEMENTOS">
+          <Key>
+            <PropertyRef Name="IdElemento" />
+          </Key>
+          <Property Name="IdElemento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Categoria" Type="int" Nullable="false" />
+          <Property Name="NombreElemento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="ImagenElementoURL" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Precio" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="IdComanda" />
+            <PropertyRef Name="IdElemento" />
+          </Key>
+          <Property Name="IdComanda" Type="int" Nullable="false" />
+          <Property Name="IdElemento" Type="int" Nullable="false" />
+          <Property Name="CantidadElementos" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ELEMENTOS_CATEGORIAS">
+          <End Role="CATEGORIAS" Type="Self.CATEGORIAS" Multiplicity="1" />
+          <End Role="ELEMENTOS" Type="Self.ELEMENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIAS">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="ELEMENTOS">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACTURA_COMANDAS">
+          <End Role="COMANDAS" Type="Self.COMANDAS" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMANDAS">
+              <PropertyRef Name="IdComanda" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="IdComanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACTURA_ELEMENTOS">
+          <End Role="ELEMENTOS" Type="Self.ELEMENTOS" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ELEMENTOS">
+              <PropertyRef Name="IdElemento" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="IdElemento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CATEGORIAS" EntityType="Self.CATEGORIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMANDAS" EntityType="Self.COMANDAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ELEMENTOS" EntityType="Self.ELEMENTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ELEMENTOS_CATEGORIAS" Association="Self.FK_ELEMENTOS_CATEGORIAS">
+            <End Role="CATEGORIAS" EntitySet="CATEGORIAS" />
+            <End Role="ELEMENTOS" EntitySet="ELEMENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACTURA_COMANDAS" Association="Self.FK_FACTURA_COMANDAS">
+            <End Role="COMANDAS" EntitySet="COMANDAS" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACTURA_ELEMENTOS" Association="Self.FK_FACTURA_ELEMENTOS">
+            <End Role="ELEMENTOS" EntitySet="ELEMENTOS" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImagenCategoriaURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ELEMENTOS" Relationship="Self.FK_ELEMENTOS_CATEGORIAS" FromRole="CATEGORIAS" ToRole="ELEMENTOS" />
+        </EntityType>
+        <EntityType Name="COMANDA">
+          <Key>
+            <PropertyRef Name="IdComanda" />
+          </Key>
+          <Property Name="IdComanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaComanda" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Servida" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FACTURAs" Relationship="Self.FK_FACTURA_COMANDAS" FromRole="COMANDAS" ToRole="FACTURA" />
+        </EntityType>
+        <EntityType Name="ELEMENTO">
+          <Key>
+            <PropertyRef Name="IdElemento" />
+          </Key>
+          <Property Name="IdElemento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="NombreElemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenElementoURL" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Precio" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CATEGORIA1" Relationship="Self.FK_ELEMENTOS_CATEGORIAS" FromRole="ELEMENTOS" ToRole="CATEGORIAS" />
+          <NavigationProperty Name="FACTURAs" Relationship="Self.FK_FACTURA_ELEMENTOS" FromRole="ELEMENTOS" ToRole="FACTURA" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="IdComanda" />
+            <PropertyRef Name="IdElemento" />
+          </Key>
+          <Property Name="IdComanda" Type="Int32" Nullable="false" />
+          <Property Name="IdElemento" Type="Int32" Nullable="false" />
+          <Property Name="CantidadElementos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COMANDA" Relationship="Self.FK_FACTURA_COMANDAS" FromRole="FACTURA" ToRole="COMANDAS" />
+          <NavigationProperty Name="ELEMENTO" Relationship="Self.FK_FACTURA_ELEMENTOS" FromRole="FACTURA" ToRole="ELEMENTOS" />
+        </EntityType>
+        <Association Name="FK_ELEMENTOS_CATEGORIAS">
+          <End Role="CATEGORIAS" Type="Self.CATEGORIA" Multiplicity="1" />
+          <End Role="ELEMENTOS" Type="Self.ELEMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIAS">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="ELEMENTOS">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACTURA_COMANDAS">
+          <End Role="COMANDAS" Type="Self.COMANDA" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMANDAS">
+              <PropertyRef Name="IdComanda" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="IdComanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACTURA_ELEMENTOS">
+          <End Role="ELEMENTOS" Type="Self.ELEMENTO" Multiplicity="1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ELEMENTOS">
+              <PropertyRef Name="IdElemento" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="IdElemento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestauranteBD" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORIAS" EntityType="Self.CATEGORIA" />
+          <EntitySet Name="COMANDAS" EntityType="Self.COMANDA" />
+          <EntitySet Name="ELEMENTOS" EntityType="Self.ELEMENTO" />
+          <EntitySet Name="FACTURAs" EntityType="Self.FACTURA" />
+          <AssociationSet Name="FK_ELEMENTOS_CATEGORIAS" Association="Self.FK_ELEMENTOS_CATEGORIAS">
+            <End Role="CATEGORIAS" EntitySet="CATEGORIAS" />
+            <End Role="ELEMENTOS" EntitySet="ELEMENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACTURA_COMANDAS" Association="Self.FK_FACTURA_COMANDAS">
+            <End Role="COMANDAS" EntitySet="COMANDAS" />
+            <End Role="FACTURA" EntitySet="FACTURAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACTURA_ELEMENTOS" Association="Self.FK_FACTURA_ELEMENTOS">
+            <End Role="ELEMENTOS" EntitySet="ELEMENTOS" />
+            <End Role="FACTURA" EntitySet="FACTURAs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="RestauranteBD">
+          <EntitySetMapping Name="CATEGORIAS">
+            <EntityTypeMapping TypeName="Model.CATEGORIA">
+              <MappingFragment StoreEntitySet="CATEGORIAS">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="ImagenCategoriaURL" ColumnName="ImagenCategoriaURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMANDAS">
+            <EntityTypeMapping TypeName="Model.COMANDA">
+              <MappingFragment StoreEntitySet="COMANDAS">
+                <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
+                <ScalarProperty Name="FechaComanda" ColumnName="FechaComanda" />
+                <ScalarProperty Name="Servida" ColumnName="Servida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ELEMENTOS">
+            <EntityTypeMapping TypeName="Model.ELEMENTO">
+              <MappingFragment StoreEntitySet="ELEMENTOS">
+                <ScalarProperty Name="IdElemento" ColumnName="IdElemento" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="NombreElemento" ColumnName="NombreElemento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="ImagenElementoURL" ColumnName="ImagenElementoURL" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACTURAs">
+            <EntityTypeMapping TypeName="Model.FACTURA">
+              <MappingFragment StoreEntitySet="FACTURA">
+                <ScalarProperty Name="IdComanda" ColumnName="IdComanda" />
+                <ScalarProperty Name="IdElemento" ColumnName="IdElemento" />
+                <ScalarProperty Name="CantidadElementos" ColumnName="CantidadElementos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
