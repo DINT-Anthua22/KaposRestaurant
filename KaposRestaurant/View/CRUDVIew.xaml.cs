@@ -80,5 +80,20 @@ namespace KaposRestaurant.View
         {
             ((ViewModel.CrudVM)this.DataContext).CambiaAccion(Accion.Borrar);
         }
+
+        private void AceptarCambiosButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LimpiarCamposButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SeleccionImagenElementoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
