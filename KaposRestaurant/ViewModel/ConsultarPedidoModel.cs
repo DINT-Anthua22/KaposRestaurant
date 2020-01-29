@@ -1,12 +1,30 @@
-﻿using System;
+﻿using KaposRestaurant.Model;
+using KaposRestaurant.Services;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KaposRestaurant.ViewModel
 {
-    class ConsultarPedidoModel
+    class ConsultarPedidoViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<ELEMENTO> Elementos { get; }
+        public ObservableCollection<FACTURA> Facturas { get; }
+        public ObservableCollection<COMANDA> Comanda { get; }
+        public ObservableCollection<CATEGORIA> Categorias { get; }
+
+        public ConsultarPedidoViewModel()
+        {
+            Elementos = BbddService.GetElementos();
+            Facturas = BbddService.GetFacturas();
+            Comanda = BbddService.GetComandas();
+            Categorias = BbddService.GetCategorias();
+
+        }
     }
 }
