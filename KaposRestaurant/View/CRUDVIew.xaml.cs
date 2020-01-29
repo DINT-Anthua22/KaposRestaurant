@@ -26,74 +26,106 @@ namespace KaposRestaurant.View
             InitializeComponent();
         }
 
+        //***************
+        //CRUD
         private void CommandBindingSave_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            int respuesta = ((ViewModel.CrudVM)this.DataContext).Save_Execute();
 
+            switch (respuesta)
+            {
+                case -1:
+                    MessageBox.Show("No se ha podido realizar la acción", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+
+                case 0:
+                    MessageBox.Show("Acción cancelada", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+
+                case 1:
+                    MessageBox.Show("Elemento creado correctamente", "Insertar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+
+                case 2:
+                    MessageBox.Show("Elemento modificado correctamente", "Editar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+
+                case 3:
+                    MessageBox.Show("Elemento eliminado correctamente", "Eliminar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+
+            }
         }
 
         private void CommandBindingSave_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = ((ViewModel.CrudVM)this.DataContext).CategoriaSeleccionada != null;
-        }
 
-        private void CommandBindingUpdate_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-
-        }
-
-        private void CommandBindingUpdate_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = ((ViewModel.CrudVM)this.DataContext).ElementoSeleccionado != null;
-        }
-
-        private void CommandBindingDelete_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
+            if (((ViewModel.CrudVM)this.DataContext).GetAccion() == Accion.Nuevo)
+            {
+                e.CanExecute = ((ViewModel.CrudVM)this.DataContext).CategoriaSeleccionada != null;
+            }
+            else
+            {
+                e.CanExecute = ((ViewModel.CrudVM)this.DataContext).CategoriaSeleccionada != null && ((ViewModel.CrudVM)this.DataContext).ElementoSeleccionado != null;
+            }
 
         }
 
-        private void CommandBindingDelete_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = ((ViewModel.CrudVM)this.DataContext).ElementoSeleccionado != null;
-        }
-
+        //***************
+        //LIMPIAR CAMPOS
         private void CommandBindingClear_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
+            ((ViewModel.CrudVM)this.DataContext).LimpiaCampos();
         }
 
         private void CommandBindingClear_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-
+            e.CanExecute = ((ViewModel.CrudVM)this.DataContext).ElementoSeleccionado != null;
         }
 
         private void AñadirElementoButton_Click(object sender, RoutedEventArgs e)
         {
+            CRUDGroupBox.Header = "Añadir Elemento";
+            AceptarCambiosButton.Content = "Añadir Elemento";
+            HacerVisibleInvisible(false);
             ((ViewModel.CrudVM)this.DataContext).CambiaAccion(Accion.Nuevo);
         }
 
         private void ModificarElementoButton_Click(object sender, RoutedEventArgs e)
         {
+            CRUDGroupBox.Header = "Modificar Elemento";
+            AceptarCambiosButton.Content = "Modificar Elemento";
+            HacerVisibleInvisible(true);
             ((ViewModel.CrudVM)this.DataContext).CambiaAccion(Accion.Editar);
         }
 
         private void EliminarElementoButton_Click(object sender, RoutedEventArgs e)
         {
+            CRUDGroupBox.Header = "Eliminar Elemento";
+            AceptarCambiosButton.Content = "Eliminar Elemento";
+            HacerVisibleInvisible(true);
             ((ViewModel.CrudVM)this.DataContext).CambiaAccion(Accion.Borrar);
-        }
-
-        private void AceptarCambiosButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void LimpiarCamposButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void SeleccionImagenElementoButton_Click(object sender, RoutedEventArgs e)
         {
+            ((ViewModel.CrudVM)this.DataContext).SeleccionarImagen();
+        }
 
+        private void HacerVisibleInvisible(bool visible)
+        {
+
+            if (visible)
+            {
+                ElementoCRUDComboBox.Visibility = Visibility.Visible;
+                SeleccionElementoLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ElementoCRUDComboBox.Visibility = Visibility.Collapsed;
+                SeleccionElementoLabel.Visibility = Visibility.Collapsed;
+
+            }
         }
     }
 }
