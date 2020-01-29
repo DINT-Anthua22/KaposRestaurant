@@ -21,6 +21,8 @@ namespace KaposRestaurant.ViewModel
 
         private Accion _accion;
 
+        //****************
+        //CONSTRUCTOR
         public CrudVM(Accion accion)
         {
             _accion = accion;
@@ -32,17 +34,25 @@ namespace KaposRestaurant.ViewModel
             }
         }
 
+        /// <summary>
+        ///     CRUD BBDD
+        /// </summary>
         public void Save_Execute()
         {
             switch (_accion)
             {
                 case Accion.Nuevo:
+
+                    BbddService.AddElemento(ElementoSeleccionado);
                     break;
                 case Accion.Editar:
+
+                    BbddService.ActualizarBbdd();
                     break;
                 case Accion.Borrar:
-                    break;
-                default:
+
+                    BbddService.DeleteElemento(ElementoSeleccionado);
+
                     break;
             }
         }
@@ -52,6 +62,13 @@ namespace KaposRestaurant.ViewModel
         {
             _accion = accion;
         }
+
+        public void LimpiaCampos()
+        {
+            ElementoSeleccionado = new ELEMENTO();
+        }
+
+        public void SeleccionarImagen() { }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
