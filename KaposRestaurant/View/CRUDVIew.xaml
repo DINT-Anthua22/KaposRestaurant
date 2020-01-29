@@ -14,14 +14,6 @@
             Command="ApplicationCommands.Save"
             Executed="CommandBindingSave_Executed"
             CanExecute="CommandBindingSave_CanExecute"/>
-        <CommandBinding
-            Command="comandos:ComandosPersonalizados.Update"
-            Executed="CommandBindingUpdate_Executed"
-            CanExecute="CommandBindingUpdate_CanExecute"/>
-        <CommandBinding
-            Command="comandos:ComandosPersonalizados.Delete"
-            Executed="CommandBindingDelete_Executed"
-            CanExecute="CommandBindingDelete_CanExecute"/>
 
         <CommandBinding
             Command="comandos:ComandosPersonalizados.Clear"
@@ -61,7 +53,7 @@
 
         </StackPanel>
 
-        <GroupBox x:Name="CRUDGroupBox" Grid.Column="1" Margin="10px">
+        <GroupBox x:Name="CRUDGroupBox" Grid.Column="1" Margin="10px" Header="Añadir Elemento">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
 
                 <Grid>
@@ -82,24 +74,24 @@
 
                     <Label Grid.Column="0" Grid.Row="0" Content="Seleccione Categoría"/>
                     <ComboBox Grid.Column="1" Grid.Row="0" x:Name="CategoriasCRUDComboBox" Width="300" Margin="10"
-                              ItemsSource="{Binding ListaCategorias}" DisplayMemberPath="NombreCategoria"></ComboBox>
+                              ItemsSource="{Binding ListaCategorias}" DisplayMemberPath="NombreCategoria" SelectedItem="{Binding CategoriaSeleccionada}"></ComboBox>
 
-                    <Label Grid.Column="0" Grid.Row="1" Content="Seleccione Elemento" Visibility="Collapsed"/>
+                    <Label x:Name="SeleccionElementoLabel" Grid.Column="0" Grid.Row="1" Content="Seleccione Elemento" Visibility="Collapsed"/>
                     <ComboBox Grid.Column="1" Grid.Row="1" x:Name="ElementoCRUDComboBox" Width="300" Margin="10" Visibility="Collapsed"
-                              ItemsSource="{Binding ListaElementos}" DisplayMemberPath="NombreElementos"></ComboBox>
+                              ItemsSource="{Binding ListaElementos}" DisplayMemberPath="NombreElemento" SelectedItem="{Binding ElementoSeleccionado}"></ComboBox>
 
                     <Label Grid.Column="0"  Grid.Row="2" Content="Nombre del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="2" x:Name="NombreElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.NombreElemento}"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" x:Name="NombreElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.NombreElemento, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="3" Content="Descripción del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="3" x:Name="DescripcionElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.Descripcion}"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" x:Name="DescripcionElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.Descripcion, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
 
                     <Label Grid.Column="0" Grid.Row="4" Content="Precio del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="PrecioElementoTextBox" Width="300" TextAlignment="Left" Text="{Binding ElementoSeleccionado.Precio}"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="PrecioElementoTextBox" Width="300" TextAlignment="Left" Text="{Binding ElementoSeleccionado.Precio, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Label Grid.Column="0" Grid.Row="5" Content="Seleccionar imagen:"/>
 
-                    <TextBox Grid.Column="1" Grid.Row="5" x:Name="ImagenElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.ImagenElementoURL}"/>
+                    <TextBox Grid.Column="1" Grid.Row="5" x:Name="ImagenElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.ImagenElementoURL, UpdateSourceTrigger=PropertyChanged}"/>
                     <Button Grid.Column="2" Grid.Row="5" x:Name="SeleccionImagenElementoButton" Content="..." Width="30" Margin="5" Height="18" Click="SeleccionImagenElementoButton_Click" />
 
                     <Image x:Name="ImagenElementoImage" Grid.Column="2" Grid.RowSpan="4" Source="{Binding ElementoSeleccionado.ImagenElementoURL}"></Image>
@@ -107,8 +99,8 @@
                 </Grid>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button x:Name="AceptarCambiosButton" Content="Aceptar" Margin="5" Width="100" Click="AceptarCambiosButton_Click"/>
-                    <Button x:Name="LimpiarCamposButton" Content="Limpiar Campos" Margin="5" Width="100" Click="LimpiarCamposButton_Click"/>
+                    <Button x:Name="AceptarCambiosButton" Content="Añadir Elemento" Margin="5" Width="100" Command="ApplicationCommands.Save"/>
+                    <Button x:Name="LimpiarCamposButton" Content="Limpiar Campos" Margin="5" Width="100" Command="comandos:ComandosPersonalizados.Clear"/>
                 </StackPanel>
 
             </StackPanel>

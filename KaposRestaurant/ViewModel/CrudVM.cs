@@ -12,6 +12,8 @@ namespace KaposRestaurant.ViewModel
 {
     class CrudVM : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ELEMENTO ElementoSeleccionado { get; set; }
 
         public CATEGORIA CategoriaSeleccionada { get; set; }
@@ -27,6 +29,7 @@ namespace KaposRestaurant.ViewModel
         {
             _accion = accion;
             ListaCategorias = BbddService.GetCategorias();
+            ListaElementos = BbddService.GetElementos(); //Cambiar por el que recupera elementos según la categoría.
 
             if (_accion == Accion.Nuevo)
             {
@@ -37,23 +40,35 @@ namespace KaposRestaurant.ViewModel
         /// <summary>
         ///     CRUD BBDD
         /// </summary>
-        public void Save_Execute()
+        public int Save_Execute()
         {
             switch (_accion)
             {
                 case Accion.Nuevo:
 
-                    BbddService.AddElemento(ElementoSeleccionado);
-                    break;
+                    if (ElementoSeleccionado.NombreElemento != "" && ElementoSeleccionado.Categoria != 0)
+                    {
+                        if (BbddService.AddElemento(ElementoSeleccionado) > 0)
+                            return 1;
+                        else
+                            return -1;
+                    }
+                    else
+                        return -1;
                 case Accion.Editar:
+                    if (BbddService.ActualizarBbdd() > 0)
+                        return 2;
+                    else
+                        return -1;
 
-                    BbddService.ActualizarBbdd();
-                    break;
                 case Accion.Borrar:
+                    if (BbddService.DeleteElemento(ElementoSeleccionado) > 0)
+                        return 3;
+                    else
+                        return -1;
 
-                    BbddService.DeleteElemento(ElementoSeleccionado);
-
-                    break;
+                default:
+                    return 0;
             }
         }
 
@@ -63,13 +78,14 @@ namespace KaposRestaurant.ViewModel
             _accion = accion;
         }
 
+        public Accion GetAccion() { return _accion; }
+
         public void LimpiaCampos()
         {
             ElementoSeleccionado = new ELEMENTO();
         }
 
-        public void SeleccionarImagen() { }
+        public void SeleccionarImagen() { Console.WriteLine("Seleccionar imagen..."); }
 
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
