@@ -94,7 +94,11 @@
     </Compile>
     <Compile Include="Services\BBDDService.cs" />
     <Compile Include="ViewModel\Class1.cs" />
+    <Compile Include="ViewModel\ConsultarPedidoModel.cs" />
     <Compile Include="View\Class1.cs" />
+    <Compile Include="View\ConsultarPedido.xaml.cs">
+      <DependentUpon>ConsultarPedido.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CRUDVIew.xaml.cs">
       <DependentUpon>CRUDVIew.xaml</DependentUpon>
     </Compile>
@@ -111,6 +115,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ConsultarPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CRUDVIew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
