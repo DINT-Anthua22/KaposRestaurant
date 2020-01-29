@@ -102,6 +102,11 @@
       <DependentUpon>KaposRestaurantBd.edmx</DependentUpon>
     </Compile>
     <Compile Include="Services\BBDDService.cs" />
+    <Compile Include="ViewModel\CategoriasViewModel.cs" />
+    <Compile Include="ViewModel\Class1.cs" />
+    <Compile Include="View\CategoriasUserControl.xaml.cs">
+      <DependentUpon>CategoriasUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\CrudVM.cs" />
     <Compile Include="View\CRUDVIew.xaml.cs">
       <DependentUpon>CRUDVIew.xaml</DependentUpon>
@@ -118,6 +123,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CategoriasUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\CRUDVIew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
