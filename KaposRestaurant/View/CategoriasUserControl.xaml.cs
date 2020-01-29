@@ -23,8 +23,8 @@ namespace KaposRestaurant.View
     {
         public CategoriasUserControl()
         {
+            this.DataContext = new CategoriasViewModel();
             InitializeComponent();
-            CategoriasListBox.DataContext = new CategoriasViewModel();
         }
 
         private void SaveBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -34,7 +34,10 @@ namespace KaposRestaurant.View
 
         private void SaveBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            (this.DataContext as CategoriasViewModel).puedeAñadirCategoria();
+            if((this.DataContext as CategoriasViewModel).puedeAñadirCategoria())
+                e.CanExecute = true;
+            else
+                e.CanExecute = false;
         }
 
         private void ClearBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -49,7 +52,11 @@ namespace KaposRestaurant.View
 
         private void DeleteBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            (this.DataContext as CategoriasViewModel).puedeBorrarCategoria();
+            if ((this.DataContext as CategoriasViewModel).puedeBorrarCategoria())
+                e.CanExecute = true;
+            else
+                e.CanExecute = false;
+            
         }
 
         private void SeleccionarImagenButton_Click(object sender, RoutedEventArgs e)

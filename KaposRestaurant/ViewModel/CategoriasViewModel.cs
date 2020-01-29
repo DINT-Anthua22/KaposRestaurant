@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KaposRestaurant.ViewModel
 {
@@ -18,8 +19,8 @@ namespace KaposRestaurant.ViewModel
         public CategoriasViewModel()
         {
             listaCategorias = BbddService.GetCategorias();
+            nuevaCategoria = new CATEGORIA();
         }
-
 
         public bool puedeBorrarCategoria()
         {
@@ -28,7 +29,7 @@ namespace KaposRestaurant.ViewModel
 
         public void borrarCategoria()
         {
-            if (!BbddService.HayElementosEnCategoria())
+            if (!BbddService.HayElementosEnCategoria(categoriaSeleccionada))
             {
                 BbddService.DeleteCategoria(categoriaSeleccionada);
             }
@@ -36,12 +37,25 @@ namespace KaposRestaurant.ViewModel
 
         public void seleccionarImagen()
         {
-            
+            //Creamos un nuevo diálogo
+            FolderBrowserDialog dialogo = new FolderBrowserDialog();
+
+            //Mostramos el diálogo
+            DialogResult resultado = dialogo.ShowDialog();
+
+            //Comprobamos si el usuario ha pulsado el botón Aceptar
+            if (resultado == System.Windows.Forms.DialogResult.OK)
+            {
+                //Accedemos a la ruta seleccionada por el usuario
+                string ruta = dialogo.SelectedPath;
+
+                nuevaCategoria.ImagenCategoriaURL = ruta;
+            }
         }
 
         public void vaciarCampos()
         {
-            nuevaCategoria = null;
+            nuevaCategoria = new CATEGORIA();
         }
 
         public void añadirCategoria()

@@ -7,6 +7,14 @@
              xmlns:comandos="clr-namespace:KaposRestaurant.Commands"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="CategoriasDataTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding NombreCategoria}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
     
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save"
@@ -27,21 +35,21 @@
 
     <DockPanel>
         <StackPanel DockPanel.Dock="Left" Margin="30,20,20,20">
-            <ListBox x:Name="CategoriasListBox" ItemsSource="{Binding listaCategorias}" SelectedItem="{Binding categoriaSeleccionada}">
-
+            <ListBox x:Name="CategoriasListBox" ItemsSource="{Binding listaCategorias}" SelectedItem="{Binding categoriaSeleccionada}" ItemTemplate="{StaticResource CategoriasDataTemplate}">
+                
             </ListBox>
-            <Button Padding="5" Command="comandos:ComandosPersonalizados.Delete">Eliminar categoría</Button>
+            <Button Padding="5" Margin="0,10,0,0" Command="comandos:ComandosPersonalizados.Delete">Eliminar categoría</Button>
         </StackPanel>
         <GroupBox Header="Añadir nueva categoría" Margin="20">
             <StackPanel Orientation="Vertical">
                 <DockPanel Margin="50">
                     <TextBlock Margin="0,0,10,0">Nombre categoría</TextBlock>
-                    <TextBox Text="{Binding nuevaCategoria.NombreCategoria}"></TextBox>
+                    <TextBox Text="{Binding nuevaCategoria.NombreCategoria, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="50,0,50,0">
                     <TextBlock Margin="0,0,15,0">Imagen categoría</TextBlock>
                     <Button x:Name="SeleccionarImagenButton" DockPanel.Dock="Right" Margin="10,0,0,0" Padding="10,0,10,0" Click="SeleccionarImagenButton_Click">...</Button>
-                    <TextBox Text="{Binding nuevaCategoria.ImagenCategoriaURL}"></TextBox>
+                    <TextBox Text="{Binding nuevaCategoria.ImagenCategoriaURL, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </DockPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,150,50,0">
                     <Button Padding="20,0,20,0" Margin="0,0,10,0" Command="ApplicationCommands.Save">Aceptar</Button>

@@ -16,7 +16,7 @@
     <Grid x:Name="ContenedorPrincipalGrid">
         <TabControl>
             <TabItem Header="CATEGORIAS CARTA">
-
+                <viewAG2:CategoriasUserControl></viewAG2:CategoriasUserControl>
             </TabItem>
             <TabItem Header="CARTA GENERAL">
                 <viewAG2:CRUDVIew/>

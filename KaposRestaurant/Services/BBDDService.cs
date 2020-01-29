@@ -94,7 +94,7 @@ namespace KaposRestaurant.Services
         public static bool ExisteCategoria(CATEGORIA item)
         {
             var consulta = from n in _contexto.CATEGORIAS
-                           where n.NombreCategoria == item.NombreCategoria
+                           where n.NombreCategoria != item.NombreCategoria
                            select n;
 
             if (consulta.Count() < 0)
@@ -115,12 +115,13 @@ namespace KaposRestaurant.Services
             return true;
         }
 
-        public static bool HayElementosEnCategoria()
+        public static bool HayElementosEnCategoria(CATEGORIA item)
         {
             var consulta = from n in _contexto.CATEGORIAS
+                           where n == item
                            select n.ELEMENTOS;
 
-            if (consulta.Count() < 0)
+            if (consulta.Count() <= 0)
                 return true;
 
             return false;
@@ -131,7 +132,7 @@ namespace KaposRestaurant.Services
             var consulta = from n in _contexto.ELEMENTOS
                            where item.IdCategoria == n.Categoria
                            select n;
-            
+
             return new ObservableCollection<ELEMENTO>(consulta.ToList());
         }
 
