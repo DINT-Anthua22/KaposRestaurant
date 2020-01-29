@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,5 +90,50 @@ namespace KaposRestaurant.Services
         {
             return _contexto.SaveChanges();
         }
+
+        public static bool ExisteCategoria(CATEGORIA item)
+        {
+            var consulta = from n in _contexto.CATEGORIAS
+                           where n.NombreCategoria == item.NombreCategoria
+                           select n;
+
+            if (consulta.Count() < 0)
+                return true;
+
+            return false;
+        }
+
+        public static bool ExisteElemento(ELEMENTO item)
+        {
+            var consulta = from n in _contexto.ELEMENTOS
+                           where n.NombreElemento == item.NombreElemento
+                           select n;
+
+            if (consulta.Count() <= 0)
+                return false;
+
+            return true;
+        }
+
+        public static bool HayElementosEnCategoria()
+        {
+            var consulta = from n in _contexto.CATEGORIAS
+                           select n.ELEMENTOS;
+
+            if (consulta.Count() < 0)
+                return true;
+
+            return false;
+        }
+
+        public static ObservableCollection<ELEMENTO> ElementosCategoria(CATEGORIA item)
+        {
+            var consulta = from n in _contexto.ELEMENTOS
+                           where item.IdCategoria == n.Categoria
+                           select n;
+            
+            return new ObservableCollection<ELEMENTO>(consulta.ToList());
+        }
+
     }
 }
