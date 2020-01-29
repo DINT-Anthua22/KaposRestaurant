@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KaposRestaurant"
         xmlns:viewAG2="clr-namespace:KaposRestaurant.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Icon="Assets/restaurant.ico">
     <Window.Resources>
         <Style TargetType="TabItem">
             <Setter Property="Width" Value="150"/>
