@@ -28,7 +28,7 @@
                         <ListBox x:Name="ElementosListBox" ItemsSource="{Binding}"></ListBox>
                         <TextBlock>
                             <Run Text="Precion Con IVA:" FontWeight="Bold"/>
-                            <Run Text="{Binding PrecionIva}"/>
+                            <Run Text="{Binding Precion}"/>
                         </TextBlock>
                         <TextBlock>
                             <Run Text="Precion Sin IVA" FontWeight="Bold"/>

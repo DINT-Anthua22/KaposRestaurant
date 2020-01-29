@@ -101,7 +101,6 @@
     <Compile Include="Services\BbddService.cs" />
     <Compile Include="ViewModel\Class1.cs" />
     <Compile Include="ViewModel\ConsultarPedidoModel.cs" />
-    <Compile Include="View\Class1.cs" />
     <Compile Include="View\ConsultarPedido.xaml.cs">
       <DependentUpon>ConsultarPedido.xaml</DependentUpon>
     </Compile>

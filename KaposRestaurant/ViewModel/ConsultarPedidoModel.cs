@@ -18,13 +18,18 @@ namespace KaposRestaurant.ViewModel
         public ObservableCollection<COMANDA> Comanda { get; }
         public ObservableCollection<CATEGORIA> Categorias { get; }
 
+        public int PrecioSinIva { get; set; }
+        private double precio = 0;
         public ConsultarPedidoViewModel()
         {
             Elementos = BbddService.GetElementos();
             Facturas = BbddService.GetFacturas();
             Comanda = BbddService.GetComandas();
             Categorias = BbddService.GetCategorias();
-
+            foreach(ELEMENTO x in Elementos)
+            {
+                precio += x.Precio;
+            }
         }
     }
 }
