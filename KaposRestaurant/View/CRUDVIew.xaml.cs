@@ -22,7 +22,63 @@ namespace KaposRestaurant.View
     {
         public CRUDVIew()
         {
+            this.DataContext = new ViewModel.CrudVM(Accion.Nuevo);
             InitializeComponent();
+        }
+
+        private void CommandBindingSave_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void CommandBindingSave_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = ((ViewModel.CrudVM)this.DataContext).CategoriaSeleccionada != null;
+        }
+
+        private void CommandBindingUpdate_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void CommandBindingUpdate_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = ((ViewModel.CrudVM)this.DataContext).ElementoSeleccionado != null;
+        }
+
+        private void CommandBindingDelete_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void CommandBindingDelete_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = ((ViewModel.CrudVM)this.DataContext).ElementoSeleccionado != null;
+        }
+
+        private void CommandBindingClear_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void CommandBindingClear_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+
+        }
+
+        private void AñadirElementoButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((ViewModel.CrudVM)this.DataContext).CambiaAccion(Accion.Nuevo);
+        }
+
+        private void ModificarElementoButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((ViewModel.CrudVM)this.DataContext).CambiaAccion(Accion.Editar);
+        }
+
+        private void EliminarElementoButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((ViewModel.CrudVM)this.DataContext).CambiaAccion(Accion.Borrar);
         }
     }
 }

@@ -4,8 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KaposRestaurant.View"
+             xmlns:comandos="clr-namespace:KaposRestaurant.Commands"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.CommandBindings>
+
+        <CommandBinding
+            Command="ApplicationCommands.Save"
+            Executed="CommandBindingSave_Executed"
+            CanExecute="CommandBindingSave_CanExecute"/>
+        <CommandBinding
+            Command="comandos:ComandosPersonalizados.Update"
+            Executed="CommandBindingUpdate_Executed"
+            CanExecute="CommandBindingUpdate_CanExecute"/>
+        <CommandBinding
+            Command="comandos:ComandosPersonalizados.Delete"
+            Executed="CommandBindingDelete_Executed"
+            CanExecute="CommandBindingDelete_CanExecute"/>
+
+        <CommandBinding
+            Command="comandos:ComandosPersonalizados.Clear"
+            Executed="CommandBindingClear_Executed"
+            CanExecute="CommandBindingClear_CanExecute"/>
+
+    </UserControl.CommandBindings>
 
     <UserControl.Resources>
 
@@ -32,9 +55,9 @@
 
         <StackPanel x:Name="CRUDStackPanel" Orientation="Vertical" VerticalAlignment="Center">
 
-            <Button Style="{StaticResource crudButtons}" x:Name="AñadirElementoButton" Content="Añadir Elemento a la Carta"/>
-            <Button Style="{StaticResource crudButtons}" x:Name="ModificarElementoButton" Content="Modificar Elemento de la Carta"/>
-            <Button Style="{StaticResource crudButtons}" x:Name="EliminarElementoButton" Content="Eliminar Elemento de la Carta"/>
+            <Button Style="{StaticResource crudButtons}" x:Name="AñadirElementoButton" Content="Añadir Elemento a la Carta" Click="AñadirElementoButton_Click"/>
+            <Button Style="{StaticResource crudButtons}" x:Name="ModificarElementoButton" Content="Modificar Elemento de la Carta" Click="ModificarElementoButton_Click"/>
+            <Button Style="{StaticResource crudButtons}" x:Name="EliminarElementoButton" Content="Eliminar Elemento de la Carta" Click="EliminarElementoButton_Click"/>
 
         </StackPanel>
 
@@ -49,7 +72,8 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition ></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -59,19 +83,22 @@
                     <Label Grid.Column="0" Grid.Row="0" Content="Seleccione Categoría"/>
                     <ComboBox Grid.Column="1" Grid.Row="0" x:Name="CategoriasCRUDComboBox" Width="300" Margin="10"></ComboBox>
 
-                    <Label Grid.Column="0"  Grid.Row="1" Content="Nombre del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="1" x:Name="NombreElementoTextBox" Width="300"/>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Seleccione Elemento" Visibility="Collapsed"/>
+                    <ComboBox Grid.Column="1" Grid.Row="1" x:Name="ElementoCRUDComboBox" Width="300" Margin="10" Visibility="Collapsed"></ComboBox>
 
-                    <Label Grid.Column="0" Grid.Row="2" Content="Nombre del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="2" x:Name="DescripcionElementoTextBox" Width="300"/>
+                    <Label Grid.Column="0"  Grid.Row="2" Content="Nombre del Elemento:"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" x:Name="NombreElementoTextBox" Width="300"/>
 
-                    <Label Grid.Column="0" Grid.Row="3" Content="Precio del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="3" x:Name="PrecioElementoTextBox" Width="300"/>
+                    <Label Grid.Column="0" Grid.Row="3" Content="Descripción del Elemento:"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" x:Name="DescripcionElementoTextBox" Width="300"/>
 
-                    <Label Grid.Column="0" Grid.Row="4" Content="Seleccionar imagen:"/>
+                    <Label Grid.Column="0" Grid.Row="4" Content="Precio del Elemento:"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="PrecioElementoTextBox" Width="300"/>
 
-                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="ImagenElementoTextBox" Width="300"/>
-                    <Button Grid.Column="2" Grid.Row="4" x:Name="SeleccionImagenElementoButton" Content="..." Width="30" Margin="5" Height="18"/>
+                    <Label Grid.Column="0" Grid.Row="5" Content="Seleccionar imagen:"/>
+
+                    <TextBox Grid.Column="1" Grid.Row="5" x:Name="ImagenElementoTextBox" Width="300"/>
+                    <Button Grid.Column="2" Grid.Row="5" x:Name="SeleccionImagenElementoButton" Content="..." Width="30" Margin="5" Height="18"/>
 
                     <Image x:Name="ImagenElementoImage" Grid.Column="2" Grid.RowSpan="4" Source="{Binding}"></Image>
 
@@ -80,6 +107,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="AceptarCambiosButton" Content="Aceptar" Margin="5" Width="100"/>
                     <Button x:Name="CancelarCambiosButton" Content="Cancelar" Margin="5" Width="100"/>
+                    <Button x:Name="LimpiarCamposButton" Content="Limpiar Campos" Margin="5" Width="100"/>
                 </StackPanel>
 
             </StackPanel>
