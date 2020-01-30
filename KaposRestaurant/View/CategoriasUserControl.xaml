@@ -44,12 +44,12 @@
             <StackPanel Orientation="Vertical">
                 <DockPanel Margin="50">
                     <TextBlock Margin="0,0,10,0">Nombre categoría</TextBlock>
-                    <TextBox Text="{Binding nuevaCategoria.NombreCategoria, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Text="{Binding nuevaCategoria.NombreCategoria}"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="50,0,50,0">
                     <TextBlock Margin="0,0,15,0">Imagen categoría</TextBlock>
                     <Button x:Name="SeleccionarImagenButton" DockPanel.Dock="Right" Margin="10,0,0,0" Padding="10,0,10,0" Click="SeleccionarImagenButton_Click">...</Button>
-                    <TextBox Text="{Binding nuevaCategoria.ImagenCategoriaURL, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Text="{Binding nuevaCategoria.ImagenCategoriaURL}"></TextBox>
                 </DockPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,150,50,0">
                     <Button Padding="20,0,20,0" Margin="0,0,10,0" Command="ApplicationCommands.Save">Aceptar</Button>

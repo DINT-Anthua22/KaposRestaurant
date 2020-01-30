@@ -32,7 +32,10 @@ namespace KaposRestaurant.ViewModel
             if (!BbddService.HayElementosEnCategoria(categoriaSeleccionada))
             {
                 BbddService.DeleteCategoria(categoriaSeleccionada);
+                MessageBox.Show("Categoría eliminada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+                MessageBox.Show("No se puede eliminar la categoría debido a que contiene elementos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void seleccionarImagen()
@@ -63,7 +66,10 @@ namespace KaposRestaurant.ViewModel
             if (!BbddService.ExisteCategoria(nuevaCategoria))
             {
                 BbddService.AddCategoria(nuevaCategoria);
+                MessageBox.Show("Categoría insertada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+                MessageBox.Show("No se ha podido insertar la categoría debido a que ya existe una con el mismo nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public bool puedeAñadirCategoria()

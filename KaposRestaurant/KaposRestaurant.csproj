@@ -104,7 +104,6 @@
     </Compile>
     <Compile Include="Services\BBDDService.cs" />
     <Compile Include="ViewModel\CategoriasViewModel.cs" />
-    <Compile Include="ViewModel\Class1.cs" />
     <Compile Include="View\CategoriasUserControl.xaml.cs">
       <DependentUpon>CategoriasUserControl.xaml</DependentUpon>
     </Compile>
