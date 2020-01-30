@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KaposRestaurant"
+        xmlns:pedidoView="clr-namespace:KaposRestaurant.View"
         xmlns:viewAG2="clr-namespace:KaposRestaurant.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Icon="Assets/restaurant.ico">
@@ -22,7 +23,7 @@
                 <viewAG2:CRUDVIew/>
             </TabItem>
             <TabItem Header="CONSULTAR PEDIDOS">
-
+                <pedidoView:ConsultarPedido/>
             </TabItem>
         </TabControl>
     </Grid>
