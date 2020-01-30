@@ -30,6 +30,7 @@ namespace KaposRestaurant.View
         private void SaveBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             (this.DataContext as CategoriasViewModel).añadirCategoria();
+            this.DataContext = new CategoriasViewModel();
         }
 
         private void SaveBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -43,6 +44,7 @@ namespace KaposRestaurant.View
         private void ClearBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             (this.DataContext as CategoriasViewModel).vaciarCampos();
+            this.DataContext = new CategoriasViewModel();
         }
 
         private void DeleteBinding_Executed(object sender, ExecutedRoutedEventArgs e)
