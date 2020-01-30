@@ -40,19 +40,15 @@ namespace KaposRestaurant.ViewModel
 
         public void seleccionarImagen()
         {
-            //Creamos un nuevo diálogo
-            FolderBrowserDialog dialogo = new FolderBrowserDialog();
+            OpenFileDialog dialogo = new OpenFileDialog();
 
-            //Mostramos el diálogo
             DialogResult resultado = dialogo.ShowDialog();
 
-            //Comprobamos si el usuario ha pulsado el botón Aceptar
-            if (resultado == System.Windows.Forms.DialogResult.OK)
+            if (resultado == DialogResult.OK)
             {
-                //Accedemos a la ruta seleccionada por el usuario
-                string ruta = dialogo.SelectedPath;
+                string fileName = dialogo.FileName;
 
-                nuevaCategoria.ImagenCategoriaURL = ruta;
+                nuevaCategoria.ImagenCategoriaURL = fileName;
             }
         }
 
@@ -67,6 +63,8 @@ namespace KaposRestaurant.ViewModel
             {
                 BbddService.AddCategoria(nuevaCategoria);
                 MessageBox.Show("Categoría insertada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                vaciarCampos();
             }
             else
                 MessageBox.Show("No se ha podido insertar la categoría debido a que ya existe una con el mismo nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -74,7 +72,7 @@ namespace KaposRestaurant.ViewModel
 
         public bool puedeAñadirCategoria()
         {
-            return nuevaCategoria.NombreCategoria != "";
+            return nuevaCategoria.NombreCategoria != null && nuevaCategoria.NombreCategoria != "";
         }
     }
 }
