@@ -29,7 +29,7 @@ namespace KaposRestaurant.ViewModel
         {
             _accion = accion;
             ListaCategorias = BbddService.GetCategorias();
-            ListaElementos = BbddService.GetElementos(); //Cambiar por el que recupera elementos según la categoría.
+
 
             if (_accion == Accion.Nuevo)
             {
@@ -75,6 +75,11 @@ namespace KaposRestaurant.ViewModel
 
         public void CambiaAccion(Accion accion)
         {
+            if (_accion == Accion.Editar || _accion == Accion.Borrar)
+            {
+                ListaElementos = CategoriaSeleccionada == null ? BbddService.GetElementos() : BbddService.GetElementosCategoria(CategoriaSeleccionada);
+            }
+
             _accion = accion;
         }
 

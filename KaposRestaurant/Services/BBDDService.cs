@@ -127,7 +127,7 @@ namespace KaposRestaurant.Services
             return false;
         }
 
-        public static ObservableCollection<ELEMENTO> ElementosCategoria(CATEGORIA item)
+        public static ObservableCollection<ELEMENTO> GetElementosCategoria(CATEGORIA item)
         {
             var consulta = from n in _contexto.ELEMENTOS
                            where item.IdCategoria == n.Categoria
