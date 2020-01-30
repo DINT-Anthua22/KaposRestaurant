@@ -99,7 +99,6 @@
       <DependentUpon>KaposRestaurantBd.edmx</DependentUpon>
     </Compile>
     <Compile Include="Services\BbddService.cs" />
-    <Compile Include="ViewModel\Class1.cs" />
     <Compile Include="ViewModel\ConsultarPedidoModel.cs" />
     <Compile Include="View\ConsultarPedido.xaml.cs">
       <DependentUpon>ConsultarPedido.xaml</DependentUpon>
