@@ -85,6 +85,7 @@ namespace KaposRestaurant.View
 
         private void AñadirElementoButton_Click(object sender, RoutedEventArgs e)
         {
+            ((ViewModel.CrudVM)this.DataContext).LimpiaCampos();
             CRUDGroupBox.Header = "Añadir Elemento";
             AceptarCambiosButton.Content = "Añadir Elemento";
             HacerVisibleInvisible(false);
@@ -126,6 +127,11 @@ namespace KaposRestaurant.View
                 SeleccionElementoLabel.Visibility = Visibility.Collapsed;
 
             }
+        }
+
+        private void CategoriasCRUDComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ((ViewModel.CrudVM)this.DataContext).CambiaAccion(((ViewModel.CrudVM)this.DataContext).GetAccion());
         }
     }
 }

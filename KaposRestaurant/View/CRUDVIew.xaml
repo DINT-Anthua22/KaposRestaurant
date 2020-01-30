@@ -74,27 +74,27 @@
 
                     <Label Grid.Column="0" Grid.Row="0" Content="Seleccione Categoría"/>
                     <ComboBox Grid.Column="1" Grid.Row="0" x:Name="CategoriasCRUDComboBox" Width="300" Margin="10"
-                              ItemsSource="{Binding ListaCategorias}" DisplayMemberPath="NombreCategoria" SelectedItem="{Binding CategoriaSeleccionada}"></ComboBox>
+                              ItemsSource="{Binding ListaCategorias}" DisplayMemberPath="NombreCategoria" SelectedItem="{Binding CategoriaSeleccionada}" SelectionChanged="CategoriasCRUDComboBox_SelectionChanged"></ComboBox>
 
                     <Label x:Name="SeleccionElementoLabel" Grid.Column="0" Grid.Row="1" Content="Seleccione Elemento" Visibility="Collapsed"/>
                     <ComboBox Grid.Column="1" Grid.Row="1" x:Name="ElementoCRUDComboBox" Width="300" Margin="10" Visibility="Collapsed"
                               ItemsSource="{Binding ListaElementos}" DisplayMemberPath="NombreElemento" SelectedItem="{Binding ElementoSeleccionado}"></ComboBox>
 
                     <Label Grid.Column="0"  Grid.Row="2" Content="Nombre del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="2" x:Name="NombreElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.NombreElemento, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" x:Name="NombreElementoTextBox" Width="300" Text="{Binding ElementName=ElementoCRUDComboBox, Path=SelectedItem.NombreElemento}"/>
 
                     <Label Grid.Column="0" Grid.Row="3" Content="Descripción del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="3" x:Name="DescripcionElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.Descripcion, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" x:Name="DescripcionElementoTextBox" Width="300" Text="{Binding ElementName=ElementoCRUDComboBox, Path=SelectedItem.Descripcion}" TextWrapping="Wrap"/>
 
                     <Label Grid.Column="0" Grid.Row="4" Content="Precio del Elemento:"/>
-                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="PrecioElementoTextBox" Width="300" TextAlignment="Left" Text="{Binding ElementoSeleccionado.Precio, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="PrecioElementoTextBox" Width="300" TextAlignment="Left" Text="{Binding ElementName=ElementoCRUDComboBox, Path=SelectedItem.Precio}"/>
 
                     <Label Grid.Column="0" Grid.Row="5" Content="Seleccionar imagen:"/>
 
-                    <TextBox Grid.Column="1" Grid.Row="5" x:Name="ImagenElementoTextBox" Width="300" Text="{Binding ElementoSeleccionado.ImagenElementoURL, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button Grid.Column="2" Grid.Row="5" x:Name="SeleccionImagenElementoButton" Content="..." Width="30" Margin="5" Height="18" Click="SeleccionImagenElementoButton_Click" />
+                    <TextBox Grid.Column="1" Grid.Row="5" x:Name="ImagenElementoTextBox" Width="300" Text="{Binding ElementName=ElementoCRUDComboBox, Path=SelectedItem.ImagenElementoURL}"/>
+                    <Button Grid.Column="2" Grid.Row="5" x:Name="SeleccionImagenElementoButton" HorizontalAlignment="Left" Content="..." Width="30" Margin="5" Height="18" Click="SeleccionImagenElementoButton_Click" />
 
-                    <Image x:Name="ImagenElementoImage" Grid.Column="2" Grid.RowSpan="4" Source="{Binding ElementoSeleccionado.ImagenElementoURL}"></Image>
+                    <Image x:Name="ImagenElementoImage" Grid.Column="2" Grid.RowSpan="4" Source="{Binding ElementName=ElementoCRUDComboBox, Path=SelectedItem.ImagenElementoURL}"></Image>
 
                 </Grid>
 
