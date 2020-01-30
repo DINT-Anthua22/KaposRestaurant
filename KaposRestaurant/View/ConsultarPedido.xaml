@@ -15,24 +15,24 @@
         </DataTemplate>
     </UserControl.Resources>
     <StackPanel>
-        <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False">
+        <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="*"/>
-                <DataGridCheckBoxColumn Header="Enviado" Binding="{Binding Servida}" Width="*"/>
-                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Enviado" Width="*" Binding="{Binding Servida}"/>
+                <DataGridTextColumn Header="Precio"  Width="*"/>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="Elementos:" FontWeight="Bold"/>
-                        <ListBox x:Name="ElementosListBox" ItemsSource="{Binding}"></ListBox>
+                        <ListBox x:Name="ElementosListBox" ItemsSource="{Binding Elementos}"></ListBox>
                         <TextBlock>
                             <Run Text="Precion Con IVA:" FontWeight="Bold"/>
-                            <Run Text="{Binding Precion}"/>
+                            <Run Text=""/>
                         </TextBlock>
                         <TextBlock>
                             <Run Text="Precion Sin IVA" FontWeight="Bold"/>
-                            <Run Text="{Binding PrecioSinIva}"/>
+                            <Run Text=""/>
                         </TextBlock>
                         
                     </StackPanel>

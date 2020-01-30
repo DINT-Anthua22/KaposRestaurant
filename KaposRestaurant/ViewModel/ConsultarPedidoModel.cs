@@ -15,21 +15,38 @@ namespace KaposRestaurant.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<ELEMENTO> Elementos { get; }
         public ObservableCollection<FACTURA> Facturas { get; }
-        public ObservableCollection<COMANDA> Comanda { get; }
-        public ObservableCollection<CATEGORIA> Categorias { get; }
+        public ObservableCollection<COMANDA> Comandas { get; set; }
 
-        public int PrecioSinIva { get; set; }
-        private double precio = 0;
+        public double Precio { get; set; }
+        List<int> NumeroELementos;
+        public ObservableCollection<int> NElementos { get; set; }
+        List<double> Precios;
+        public ObservableCollection<double> NPrecios{ get; set; }
         public ConsultarPedidoViewModel()
         {
-            Elementos = BbddService.GetElementos();
-            Facturas = BbddService.GetFacturas();
-            Comanda = BbddService.GetComandas();
-            Categorias = BbddService.GetCategorias();
+            NumeroELementos = new List<int>();
+            Precios = new List<double>();
+            Comandas = BbddService.GetComandas();
+            Elementos = BbddService.GetElementoFactura(Comandas.First().IdComanda);
             foreach(ELEMENTO x in Elementos)
             {
-                precio += x.Precio;
+                NumeroELementos.Add(BbddService.CantidadELementosFacturas(x.IdElemento));
             }
+
+            NElementos = new ObservableCollection<int>(NumeroELementos);
+
+            for(int i = 0; i < NumeroELementos.Count; i++)
+            {
+                foreach(ELEMENTO x in Elementos)
+                {
+                    Precios.Add(BbddService.CalcularPrecioPorELmento(NumeroELementos[i], x.IdElemento));
+                }
+                
+            }
+
+            NPrecios = new ObservableCollection<double>(Precios);
+
         }
+
     }
 }
