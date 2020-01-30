@@ -135,6 +135,60 @@ namespace KaposRestaurant.Services
 
             return new ObservableCollection<ELEMENTO>(consulta.ToList());
         }
+        
+      
+        public static ObservableCollection<ELEMENTO> GetElementoFactura(int id)
+        {
+            ObservableCollection<ELEMENTO> elementosresult = new ObservableCollection<ELEMENTO>();
+            var consulta = from x in _contexto.FACTURAs
+                           where id == x.IdComanda
+                           select x;
+
+            ObservableCollection<FACTURA> facturas_recuperadas = new ObservableCollection<FACTURA>(consulta.ToList());
+            foreach(FACTURA x in facturas_recuperadas)
+            {
+                var consulta2 = from y in _contexto.ELEMENTOS
+                                where x.IdElemento == y.IdElemento
+                                select y;
+                elementosresult.Add(consulta2.ToList().First());
+               
+            }
+
+            return elementosresult;
+
+        }
+
+        public static int CantidadELementosFacturas(int id)
+        {
+            int resultado=0;
+            var consulta = from x in _contexto.FACTURAs
+                           where id == x.IdComanda
+                           select x;
+            foreach(FACTURA x in consulta)
+            {
+                resultado += x.CantidadElementos;
+            }
+            return resultado;
+        }
+
+        public static double CalcularPrecioPorELmento(int cantidad, int id)
+        {
+            double precio = 0;
+
+            var consulta = from x in _contexto.ELEMENTOS
+                           where x.IdElemento == id
+                           select x;
+            foreach(ELEMENTO y in consulta)
+            {
+                precio += y.Precio;
+            }
+            return precio;
+
+        }
+
+        
+
+
 
     }
 }
