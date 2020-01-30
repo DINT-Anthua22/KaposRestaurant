@@ -33,5 +33,17 @@ namespace KaposRestaurant.Commands
 
             );
 
+        public static readonly RoutedUICommand Update = new RoutedUICommand
+            (
+                "Update",
+                "Update",
+                typeof(ComandosPersonalizados),
+                new InputGestureCollection()
+                {
+                    new KeyGesture(Key.U, ModifierKeys.Control)
+                }
+
+            );
+
     }
 }

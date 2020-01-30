@@ -90,5 +90,51 @@ namespace KaposRestaurant.Services
         {
             return _contexto.SaveChanges();
         }
+
+        public static bool ExisteCategoria(CATEGORIA item)
+        {
+            var consulta = from n in _contexto.CATEGORIAS
+                           where n.NombreCategoria == item.NombreCategoria
+                           select n;
+
+            if (consulta.Count() > 0)
+                return true;
+
+            return false;
+        }
+
+        public static bool ExisteElemento(ELEMENTO item)
+        {
+            var consulta = from n in _contexto.ELEMENTOS
+                           where n.NombreElemento == item.NombreElemento
+                           select n;
+
+            if (consulta.Count() <= 0)
+                return false;
+
+            return true;
+        }
+
+        public static bool HayElementosEnCategoria(CATEGORIA item)
+        {
+            var consulta = from n in _contexto.ELEMENTOS
+                           where n.Categoria == item.IdCategoria
+                           select n;
+
+            if (consulta.Count() > 0)
+                return true;
+
+            return false;
+        }
+
+        public static ObservableCollection<ELEMENTO> GetElementosCategoria(CATEGORIA item)
+        {
+            var consulta = from n in _contexto.ELEMENTOS
+                           where item.IdCategoria == n.Categoria
+                           select n;
+
+            return new ObservableCollection<ELEMENTO>(consulta.ToList());
+        }
+
     }
 }

@@ -8,9 +8,12 @@ using System.Windows;
 
 namespace KaposRestaurant
 {
-    /// <summary>
-    /// Lógica de interacción para App.xaml
-    /// </summary>
+    enum Accion
+    {
+        Nuevo,
+        Editar,
+        Borrar
+    }
     public partial class App : Application
     {
     }

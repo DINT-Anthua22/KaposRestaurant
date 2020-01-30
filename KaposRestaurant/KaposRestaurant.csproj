@@ -37,12 +37,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Assets\restaurant.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.9.3.3\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PropertyChanged, Version=2.6.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\packages\PropertyChanged.Fody.2.6.1\lib\net452\PropertyChanged.dll</HintPath>
@@ -52,6 +64,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -98,11 +111,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KaposRestaurantBd.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Services\BbddService.cs" />
+
     <Compile Include="ViewModel\ConsultarPedidoModel.cs" />
     <Compile Include="View\ConsultarPedido.xaml.cs">
       <DependentUpon>ConsultarPedido.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="Services\BBDDService.cs" />
+    <Compile Include="ViewModel\CategoriasViewModel.cs" />
+    <Compile Include="View\CategoriasUserControl.xaml.cs">
+      <DependentUpon>CategoriasUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\CrudVM.cs" />
     <Compile Include="View\CRUDVIew.xaml.cs">
       <DependentUpon>CRUDVIew.xaml</DependentUpon>
     </Compile>
@@ -114,14 +134,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Assets\Class1.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+
     <Page Include="View\ConsultarPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+
+    <Page Include="View\CategoriasUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+
     </Page>
     <Page Include="View\CRUDVIew.xaml">
       <SubType>Designer</SubType>
@@ -163,6 +188,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\restaurant.ico" />
     <Content Include="Model\KaposRestaurantBd.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>KaposRestaurantBd.Context.cs</LastGenOutput>
