@@ -128,7 +128,7 @@
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ImagenElementoURL" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Precio" Type="Double" Nullable="false" />
-          <NavigationProperty Name="CATEGORIA1" Relationship="Self.FK_ELEMENTOS_CATEGORIAS" FromRole="ELEMENTOS" ToRole="CATEGORIAS" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK_ELEMENTOS_CATEGORIAS" FromRole="ELEMENTOS" ToRole="CATEGORIAS" />
           <NavigationProperty Name="FACTURAs" Relationship="Self.FK_FACTURA_ELEMENTOS" FromRole="ELEMENTOS" ToRole="FACTURA" />
         </EntityType>
         <EntityType Name="FACTURA">

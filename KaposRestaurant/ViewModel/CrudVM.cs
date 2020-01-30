@@ -45,14 +45,20 @@ namespace KaposRestaurant.ViewModel
             switch (_accion)
             {
                 case Accion.Nuevo:
+                    if (CategoriaSeleccionada != null)
+                        if (ElementoSeleccionado.NombreElemento != "")
+                        {
+                            if (BbddService.AddElemento(ElementoSeleccionado) > 0)
+                            {
+                                ElementoSeleccionado = new ELEMENTO();
+                                return 1;
+                            }
 
-                    if (ElementoSeleccionado.NombreElemento != "" && ElementoSeleccionado.Categoria != 0)
-                    {
-                        if (BbddService.AddElemento(ElementoSeleccionado) > 0)
-                            return 1;
+                            else
+                                return -1;
+                        }
                         else
                             return -1;
-                    }
                     else
                         return -1;
                 case Accion.Editar:
@@ -75,7 +81,7 @@ namespace KaposRestaurant.ViewModel
 
         public void CambiaAccion(Accion accion)
         {
-            if (_accion == Accion.Editar || _accion == Accion.Borrar)
+            if (accion == Accion.Editar || accion == Accion.Borrar)
             {
                 ListaElementos = CategoriaSeleccionada == null ? BbddService.GetElementos() : BbddService.GetElementosCategoria(CategoriaSeleccionada);
             }
