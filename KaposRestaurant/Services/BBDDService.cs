@@ -138,36 +138,43 @@ namespace KaposRestaurant.Services
 
             return new ObservableCollection<ELEMENTO>(consulta.ToList());
         }
-        
-      
-        public static ObservableCollection<ELEMENTO> GetElementoFactura(int id)
+
+
+        public static ObservableCollection<ELEMENTO> GetElementosFactura(ObservableCollection<FACTURA> listaFacturas)
         {
             ObservableCollection<ELEMENTO> elementosresult = new ObservableCollection<ELEMENTO>();
-            var consulta = from x in _contexto.FACTURAs
-                           where id == x.IdComanda
-                           select x;
 
-            ObservableCollection<FACTURA> facturas_recuperadas = new ObservableCollection<FACTURA>(consulta.ToList());
-            foreach(FACTURA x in facturas_recuperadas)
+            foreach (FACTURA registroFactura in listaFacturas)
             {
-                var consulta2 = from y in _contexto.ELEMENTOS
-                                where x.IdElemento == y.IdElemento
-                                select y;
+                var consulta2 = from elemento in _contexto.ELEMENTOS
+                                where elemento.IdElemento == registroFactura.IdElemento
+                                select elemento;
+
                 elementosresult.Add(consulta2.ToList().First());
-               
             }
 
             return elementosresult;
 
         }
 
-        public static int CantidadELementosFacturas(int id)
+        public static ObservableCollection<FACTURA> getFacturasPorIdComanda(int id)
         {
-            int resultado=0;
             var consulta = from x in _contexto.FACTURAs
                            where id == x.IdComanda
                            select x;
-            foreach(FACTURA x in consulta)
+
+            ObservableCollection<FACTURA> facturas_recuperadas = new ObservableCollection<FACTURA>(consulta.ToList());
+
+            return facturas_recuperadas;
+        }
+
+        public static int CantidadELementosFacturas(int id)
+        {
+            int resultado = 0;
+            var consulta = from x in _contexto.FACTURAs
+                           where id == x.IdComanda
+                           select x;
+            foreach (FACTURA x in consulta)
             {
                 resultado += x.CantidadElementos;
             }
@@ -181,7 +188,7 @@ namespace KaposRestaurant.Services
             var consulta = from x in _contexto.ELEMENTOS
                            where x.IdElemento == id
                            select x;
-            foreach(ELEMENTO y in consulta)
+            foreach (ELEMENTO y in consulta)
             {
                 precio += y.Precio;
             }
@@ -189,7 +196,7 @@ namespace KaposRestaurant.Services
 
         }
 
-        
+
 
 
 

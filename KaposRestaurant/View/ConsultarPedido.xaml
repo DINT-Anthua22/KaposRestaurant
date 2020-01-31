@@ -15,7 +15,7 @@
         </DataTemplate>
     </UserControl.Resources>
     <StackPanel>
-        <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas}" AutoGenerateColumns="False">
+        <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="*"/>
                 <DataGridCheckBoxColumn Header="Enviado" Width="*" Binding="{Binding Servida}"/>
@@ -25,16 +25,17 @@
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="Elementos:" FontWeight="Bold"/>
-                        <ListBox x:Name="ElementosListBox" ItemsSource="{Binding Elementos}"></ListBox>
-                        <TextBlock>
-                            <Run Text="Precion Con IVA:" FontWeight="Bold"/>
-                            <Run Text=""/>
-                        </TextBlock>
-                        <TextBlock>
-                            <Run Text="Precion Sin IVA" FontWeight="Bold"/>
-                            <Run Text=""/>
-                        </TextBlock>
-                        
+                        <ListBox x:Name="ElementosListBox" ItemsSource="{Binding FACTURAs}" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="NombreElementoTextBlock">
+                                        <Run Text="{Binding ELEMENTO.NombreElemento}"/>
+                                        <Run Text="                                 x"/>
+                                        <Run Text="{Binding CantidadElementos}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </StackPanel>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>

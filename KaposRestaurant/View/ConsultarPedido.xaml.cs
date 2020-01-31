@@ -23,8 +23,9 @@ namespace KaposRestaurant.View
     {
         public ConsultarPedido()
         {
-            InitializeComponent();
             this.DataContext = new ConsultarPedidoViewModel();
+            InitializeComponent();
+           
         }
 
 
