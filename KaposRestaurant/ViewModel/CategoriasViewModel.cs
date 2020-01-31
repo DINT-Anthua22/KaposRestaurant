@@ -3,6 +3,7 @@ using KaposRestaurant.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace KaposRestaurant.ViewModel
 {
-    class CategoriasViewModel
+    class CategoriasViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<CATEGORIA> listaCategorias { get; set; }
         public CATEGORIA categoriaSeleccionada { get; set; }
@@ -21,6 +22,8 @@ namespace KaposRestaurant.ViewModel
             listaCategorias = BbddService.GetCategorias();
             nuevaCategoria = new CATEGORIA();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public bool puedeBorrarCategoria()
         {
