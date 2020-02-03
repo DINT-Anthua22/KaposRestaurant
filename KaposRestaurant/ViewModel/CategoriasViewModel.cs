@@ -44,6 +44,7 @@ namespace KaposRestaurant.ViewModel
         public void seleccionarImagen()
         {
             OpenFileDialog dialogo = new OpenFileDialog();
+            dialogo.Filter = "Archivos de imágenes|*.jpg;*.png";
 
             DialogResult resultado = dialogo.ShowDialog();
 
