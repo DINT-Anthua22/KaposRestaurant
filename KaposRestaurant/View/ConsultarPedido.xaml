@@ -7,38 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <DataTemplate x:Key="Detalles">
-            <TextBlock>
-                <Run Text="Nº Elementos"/>
-                <Run Text="{Binding Path=ELEMENTOS.Count}"/>
-            </TextBlock>
+        <DataTemplate x:Key="Elementos">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding ELEMENTO.NombreElemento}"></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="0" >
+                    <Run Text="x"/>
+                    <Run Text="{Binding CantidadElementos}"/>
+                </TextBlock>
+            </Grid>
         </DataTemplate>
     </UserControl.Resources>
-    <StackPanel>
-        <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="*"/>
-                <DataGridCheckBoxColumn Header="Enviado" Width="*" Binding="{Binding Servida}"/>
-                <DataGridTextColumn Header="Precio"  Width="*"/>
-            </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Elementos:" FontWeight="Bold"/>
-                        <ListBox x:Name="ElementosListBox" ItemsSource="{Binding FACTURAs}" >
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock x:Name="NombreElementoTextBlock">
-                                        <Run Text="{Binding ELEMENTO.NombreElemento}"/>
-                                        <Run Text="                                 x"/>
-                                        <Run Text="{Binding CantidadElementos}"/>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-        </DataGrid>
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="*" IsReadOnly="True"/>
+                    <DataGridCheckBoxColumn Header="Servida" Width="*" Binding="{Binding Servida, Mode=TwoWay}" />
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="20">
+                            <TextBlock Text="Elementos:" FontWeight="Bold"/>
+                            <ListBox x:Name="ElementosListBox" ItemsSource="{Binding FACTURAs}" ItemTemplate="{StaticResource Elementos}">
+                            </ListBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+            <Button x:Name="Actualizar" Click="Actualizar_Click" Width="150" HorizontalAlignment="Center" Margin="20">Actualizar Pedido</Button>
+        </StackPanel>
+    </ScrollViewer>
+    
 </UserControl>
