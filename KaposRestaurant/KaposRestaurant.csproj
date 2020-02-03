@@ -111,6 +111,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KaposRestaurantBd.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\PropertyChangedModelo.cs" />
     <Compile Include="Services\BlobStorage.cs" />
     <Compile Include="ViewModel\ConsultarPedidoModel.cs" />
     <Compile Include="View\ConsultarPedido.xaml.cs">
