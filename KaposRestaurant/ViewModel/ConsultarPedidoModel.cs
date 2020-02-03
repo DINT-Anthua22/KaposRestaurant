@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace KaposRestaurant.ViewModel
 {
@@ -16,9 +17,19 @@ namespace KaposRestaurant.ViewModel
 
         public ObservableCollection<COMANDA> Comandas { get; set; }
 
+        public double Precio { get; set; }
         public ConsultarPedidoViewModel()
         {
             Comandas = BbddService.GetComandas();
+           
+        }
+
+        public void Actualizar()
+        {
+            BbddService.ActualizarBbdd();
+           
         }
     }
+
+   
 }

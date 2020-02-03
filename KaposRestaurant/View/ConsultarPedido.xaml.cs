@@ -28,6 +28,10 @@ namespace KaposRestaurant.View
            
         }
 
-
+        private void Actualizar_Click(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ConsultarPedidoViewModel).Actualizar();
+            MessageBox.Show("Info: " + "Comandas Actualizadas", "Actualización", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }
