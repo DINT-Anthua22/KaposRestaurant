@@ -34,6 +34,7 @@ namespace KaposRestaurant.ViewModel
             if (_accion == Accion.Nuevo)
             {
                 ElementoSeleccionado = new ELEMENTO();
+                ElementoSeleccionado.ImagenElementoURL = "";
             }
         }
 
@@ -46,21 +47,18 @@ namespace KaposRestaurant.ViewModel
             {
                 case Accion.Nuevo:
                     if (CategoriaSeleccionada != null)
-                        if (ElementoSeleccionado.NombreElemento != "")
+                    {
+                        ElementoSeleccionado.Categoria = CategoriaSeleccionada.IdCategoria;
+                        if (ElementoSeleccionado.NombreElemento != "" && ElementoSeleccionado.Precio > 0)
                         {
-                            if (BbddService.AddElemento(ElementoSeleccionado) > 0)
-                            {
-                                ElementoSeleccionado = new ELEMENTO();
-                                return 1;
-                            }
 
-                            else
-                                return -1;
+                            return BbddService.AddElemento(ElementoSeleccionado);
+
                         }
-                        else
-                            return -1;
-                    else
-                        return -1;
+                        else return -1;
+
+                    }
+                    else return -1;
                 case Accion.Editar:
                     if (BbddService.ActualizarBbdd() > 0)
                         return 2;
