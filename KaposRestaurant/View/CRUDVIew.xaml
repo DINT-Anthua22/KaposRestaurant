@@ -99,8 +99,8 @@
                 </Grid>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button x:Name="AceptarCambiosButton" Content="Añadir Elemento" Margin="5" Width="100" Command="ApplicationCommands.Save"/>
-                    <Button x:Name="LimpiarCamposButton" Content="Limpiar Campos" Margin="5" Width="100" Command="comandos:ComandosPersonalizados.Clear"/>
+                    <Button x:Name="AceptarCambiosButton" Content="Añadir Elemento" Margin="5" Width="150" Command="ApplicationCommands.Save"/>
+                    <Button x:Name="LimpiarCamposButton" Content="Limpiar Campos" Margin="5" Width="150" Command="comandos:ComandosPersonalizados.Clear"/>
                 </StackPanel>
 
             </StackPanel>
