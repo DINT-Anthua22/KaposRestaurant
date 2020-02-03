@@ -41,7 +41,7 @@
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>
-            <Button x:Name="Actualizar" Click="Actualizar_Click" Width="150" HorizontalAlignment="Center" Margin="20">Actualizar Pedido</Button>
+            <Button x:Name="Actualizar" Click="Actualizar_Click" Width="150" HorizontalAlignment="Center" Margin="20">Actualizar Pedidos</Button>
         </StackPanel>
     </ScrollViewer>
     
