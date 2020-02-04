@@ -36,6 +36,7 @@ namespace KaposRestaurant.View
             {
                 case -1:
                     MessageBox.Show("No se ha podido realizar la acción", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+
                     break;
 
                 case 0:
@@ -52,9 +53,12 @@ namespace KaposRestaurant.View
 
                 case 3:
                     MessageBox.Show("Elemento eliminado correctamente", "Eliminar", MessageBoxButton.OK, MessageBoxImage.Information);
+
                     break;
 
             }
+
+             ((ViewModel.CrudVM)this.DataContext).LimpiaCampos();
         }
 
         private void CommandBindingSave_CanExecute(object sender, CanExecuteRoutedEventArgs e)

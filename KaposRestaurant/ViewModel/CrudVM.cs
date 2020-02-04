@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KaposRestaurant.ViewModel
 {
@@ -51,14 +53,13 @@ namespace KaposRestaurant.ViewModel
                         ElementoSeleccionado.Categoria = CategoriaSeleccionada.IdCategoria;
                         if (ElementoSeleccionado.NombreElemento != "" && ElementoSeleccionado.Precio > 0)
                         {
-
                             return BbddService.AddElemento(ElementoSeleccionado);
-
                         }
                         else return -1;
 
                     }
                     else return -1;
+
                 case Accion.Editar:
                     if (BbddService.ActualizarBbdd() > 0)
                         return 2;
@@ -94,7 +95,25 @@ namespace KaposRestaurant.ViewModel
             ElementoSeleccionado = new ELEMENTO();
         }
 
-        public void SeleccionarImagen() { Console.WriteLine("Seleccionar imagen..."); }
+        public void SeleccionarImagen()
+        {
+            OpenFileDialog dialogoImagen = new OpenFileDialog();
+
+            dialogoImagen.InitialDirectory = "c://";
+            dialogoImagen.Filter = "Imágenes JPG (*.jpg)|*.jpg|Imágenes PNG (*.png)|*.png|Todos los archivos (*.*)|*.*";
+
+            dialogoImagen.FilterIndex = 3;
+
+            dialogoImagen.RestoreDirectory = true;
+
+            if (dialogoImagen.ShowDialog() == DialogResult.OK)
+            {
+                var ruta = string.Empty;
+
+                ruta = dialogoImagen.FileName;
+                ElementoSeleccionado.ImagenElementoURL = ruta.ToString();
+            }
+        }
 
     }
 }
