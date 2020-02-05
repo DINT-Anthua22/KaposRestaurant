@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,25 +36,12 @@ namespace KaposRestaurant.ViewModel
             if (!BbddService.HayElementosEnCategoria(categoriaSeleccionada))
             {
                 BbddService.DeleteCategoria(categoriaSeleccionada);
-                MessageBox.Show("Categoría eliminada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-                MessageBox.Show("No se puede eliminar la categoría debido a que contiene elementos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void seleccionarImagen()
+        public void seleccionarImagen(string fileName)
         {
-            OpenFileDialog dialogo = new OpenFileDialog();
-            dialogo.Filter = "Archivos de imágenes|*.jpg;*.png";
-
-            DialogResult resultado = dialogo.ShowDialog();
-
-            if (resultado == DialogResult.OK)
-            {
-                string fileName = dialogo.FileName;
-
-                nuevaCategoria.ImagenCategoriaURL = fileName;
-            }
+            nuevaCategoria.ImagenCategoriaURL = fileName;
         }
 
         public void vaciarCampos()
@@ -65,13 +53,16 @@ namespace KaposRestaurant.ViewModel
         {
             if (!BbddService.ExisteCategoria(nuevaCategoria))
             {
-                BbddService.AddCategoria(nuevaCategoria);
-                MessageBox.Show("Categoría insertada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string[] rutaFichero = nuevaCategoria.ImagenCategoriaURL.Split('\\');
+                
+                string urlImagen = BlobStorage.guardarImagen(nuevaCategoria.ImagenCategoriaURL, rutaFichero[rutaFichero.Length-1]);
 
+                nuevaCategoria.ImagenCategoriaURL = urlImagen;
+
+                BbddService.AddCategoria(nuevaCategoria);
+                
                 vaciarCampos();
             }
-            else
-                MessageBox.Show("No se ha podido insertar la categoría debido a que ya existe una con el mismo nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public bool puedeAñadirCategoria()
