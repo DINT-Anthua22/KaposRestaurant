@@ -20,7 +20,7 @@ namespace KaposRestaurant.ViewModel
         public double Precio { get; set; }
         public ConsultarPedidoViewModel()
         {
-            Comandas = BbddService.GetComandas();
+            Comandas = new ObservableCollection<COMANDA>(BbddService.GetComandas().OrderByDescending(x => x.FechaComanda).ToList());
            
         }
 
