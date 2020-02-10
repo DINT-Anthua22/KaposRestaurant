@@ -26,7 +26,7 @@
     </UserControl.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel>
-            <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False">
+            <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="*" IsReadOnly="True"/>
                     <DataGridCheckBoxColumn Header="Servida" Width="*" Binding="{Binding Servida, Mode=TwoWay}" />
