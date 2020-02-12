@@ -32,7 +32,7 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                 <TextBlock Text="Notificar que la comanda esta servida" VerticalAlignment="Center"></TextBlock>
+                 <TextBlock Text="Notificar que alguna comanda está servida" VerticalAlignment="Center"></TextBlock>
                  <Button x:Name="Actualizar" Click="Actualizar_Click" Margin="20">
                     <Image Source="/Assets/refresh.png" ToolTip="Refrescar Comanda si está servida" Height="30"/>
                 </Button>
@@ -40,8 +40,8 @@
            
             <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas, Mode=TwoWay}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="*" IsReadOnly="True"/>
-                    <DataGridCheckBoxColumn Header="Servida" Width="*" Binding="{Binding Servida, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="600" IsReadOnly="True"/>
+                    <DataGridCheckBoxColumn Header="Servida" Width="100" Binding="{Binding Servida, Mode=TwoWay}" />
                 </DataGrid.Columns>
                 <DataGrid.RowDetailsTemplate>
                     <DataTemplate>

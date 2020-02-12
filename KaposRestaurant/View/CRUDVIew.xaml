@@ -28,11 +28,6 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
 
-        <Style TargetType="Button" x:Key="crudButtons">
-            <Setter Property="Margin" Value="0,0,0,15"/>
-            <Setter Property="Height" Value="50"/>
-        </Style>
-
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="10"/>
         </Style>
@@ -47,9 +42,9 @@
 
         <StackPanel x:Name="CRUDStackPanel" Orientation="Vertical" VerticalAlignment="Center">
 
-            <Button Style="{StaticResource crudButtons}" x:Name="AñadirElementoButton" Content="Añadir Elemento a la Carta" Click="AñadirElementoButton_Click"/>
-            <Button Style="{StaticResource crudButtons}" x:Name="ModificarElementoButton" Content="Modificar Elemento de la Carta" Click="ModificarElementoButton_Click"/>
-            <Button Style="{StaticResource crudButtons}" x:Name="EliminarElementoButton" Content="Eliminar Elemento de la Carta" Click="EliminarElementoButton_Click"/>
+            <Button Margin="0,0,0,15" Height="50" x:Name="AñadirElementoButton" Content="Añadir Elemento a la Carta" Click="AñadirElementoButton_Click"/>
+            <Button Margin="0,0,0,15" Height="50" x:Name="ModificarElementoButton" Content="Modificar Elemento de la Carta" Click="ModificarElementoButton_Click"/>
+            <Button Margin="0,0,0,15" Height="50" x:Name="EliminarElementoButton" Content="Eliminar Elemento de la Carta" Click="EliminarElementoButton_Click"/>
 
         </StackPanel>
 
