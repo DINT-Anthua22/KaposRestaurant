@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\restaurant.ico" />
+    <Resource Include="Assets\refresh.png" />
     <Content Include="Model\KaposRestaurantBd.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>KaposRestaurantBd.Context.cs</LastGenOutput>
