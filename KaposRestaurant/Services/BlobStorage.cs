@@ -29,7 +29,11 @@ namespace KaposRestaurant.Services
         public static void eliminarImagen(string blobReference)
         {
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobReference);
-            blockBlob.Delete();
+
+            if (blockBlob.Exists())
+            {
+                blockBlob.Delete();
+            }
         }
 
 

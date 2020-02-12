@@ -36,12 +36,12 @@ namespace KaposRestaurant.View
                 (this.DataContext as CategoriasViewModel).añadirCategoria();
                 this.DataContext = new CategoriasViewModel();
 
-                System.Windows.Forms.MessageBox.Show("Categoría insertada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show("Categoría insertada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("No se ha podido insertar la categoría debido a que ya existe una con el mismo nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("No se ha podido insertar la categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -65,11 +65,11 @@ namespace KaposRestaurant.View
             {
                 (this.DataContext as CategoriasViewModel).borrarCategoria();
 
-                System.Windows.Forms.MessageBox.Show("Categoría eliminada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                System.Windows.Forms.MessageBox.Show("Categoría eliminada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("No se puede eliminar la categoría debido a que contiene elementos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Windows.Forms.MessageBox.Show("No se ha podido eliminar la categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
