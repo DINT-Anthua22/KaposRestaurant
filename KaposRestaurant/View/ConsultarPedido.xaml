@@ -23,9 +23,21 @@
                 </TextBlock>
             </Grid>
         </DataTemplate>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Candara"/>
+        </Style>
     </UserControl.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                 <TextBlock Text="Notificar que la comanda esta servida" VerticalAlignment="Center"></TextBlock>
+                 <Button x:Name="Actualizar" Click="Actualizar_Click" Margin="20">
+                    <Image Source="/Assets/refresh.png" ToolTip="Refrescar Enviada" Height="30"/>
+                </Button>
+            </StackPanel>
+           
             <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas, Mode=TwoWay}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="*" IsReadOnly="True"/>
@@ -41,7 +53,6 @@
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>
-            <Button x:Name="Actualizar" Click="Actualizar_Click" Width="150" HorizontalAlignment="Center" Margin="20">Actualizar Pedidos</Button>
         </StackPanel>
     </ScrollViewer>
     
