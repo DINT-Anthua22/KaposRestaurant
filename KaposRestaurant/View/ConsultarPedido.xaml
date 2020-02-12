@@ -34,7 +34,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                  <TextBlock Text="Notificar que alguna comanda está servida" VerticalAlignment="Center"></TextBlock>
                  <Button x:Name="Actualizar" Click="Actualizar_Click" Margin="20">
-                    <Image Source="/Assets/refresh.png" ToolTip="Refrescar Comanda si está servida" Height="25"/>
+                    <Image Source="/Assets/refresh.png" ToolTip="Refrescar comanda si está servida" Height="25"/>
                 </Button>
             </StackPanel>
            
