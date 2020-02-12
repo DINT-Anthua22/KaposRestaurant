@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -18,7 +19,7 @@ namespace KaposRestaurant.View
     /// <summary>
     /// Lógica de interacción para CRUDVIew.xaml
     /// </summary>
-    public partial class CRUDVIew : UserControl
+    public partial class CRUDVIew : System.Windows.Controls.UserControl
     {
         public CRUDVIew()
         {
@@ -35,24 +36,24 @@ namespace KaposRestaurant.View
             switch (respuesta)
             {
                 case -1:
-                    MessageBox.Show("No se ha podido realizar la acción", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("No se ha podido realizar la acción", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
 
                     break;
 
                 case 0:
-                    MessageBox.Show("Acción cancelada", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("Acción cancelada", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
 
                 case 1:
-                    MessageBox.Show("Elemento creado correctamente", "Insertar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("Elemento creado correctamente", "Insertar", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
 
                 case 2:
-                    MessageBox.Show("Elemento modificado correctamente", "Editar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("Elemento modificado correctamente", "Editar", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
 
                 case 3:
-                    MessageBox.Show("Elemento eliminado correctamente", "Eliminar", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("Elemento eliminado correctamente", "Eliminar", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     break;
 
@@ -114,7 +115,23 @@ namespace KaposRestaurant.View
 
         private void SeleccionImagenElementoButton_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModel.CrudVM)this.DataContext).SeleccionarImagen();
+            OpenFileDialog dialogoImagen = new OpenFileDialog();
+
+            dialogoImagen.InitialDirectory = "c://";
+            dialogoImagen.Filter = "Imágenes JPG (*.jpg)|*.jpg|Imágenes PNG (*.png)|*.png|Todos los archivos (*.*)|*.*";
+
+            dialogoImagen.FilterIndex = 3;
+
+            dialogoImagen.RestoreDirectory = true;
+
+            if (dialogoImagen.ShowDialog() == DialogResult.OK)
+            {
+                string ruta = "";
+
+                ruta = dialogoImagen.FileName;
+
+                ((ViewModel.CrudVM)this.DataContext).SeleccionarImagen(ruta);
+            }
         }
 
         private void HacerVisibleInvisible(bool visible)

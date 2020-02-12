@@ -53,6 +53,7 @@ namespace KaposRestaurant.ViewModel
                         ElementoSeleccionado.Categoria = CategoriaSeleccionada.IdCategoria;
                         if (ElementoSeleccionado.NombreElemento != "" && ElementoSeleccionado.Precio > 0)
                         {
+                            GuardarImagen();
                             return BbddService.AddElemento(ElementoSeleccionado);
                         }
                         else return -1;
@@ -95,24 +96,21 @@ namespace KaposRestaurant.ViewModel
             ElementoSeleccionado = new ELEMENTO();
         }
 
-        public void SeleccionarImagen()
+        public void SeleccionarImagen(string ruta)
         {
-            OpenFileDialog dialogoImagen = new OpenFileDialog();
+            ElementoSeleccionado.ImagenElementoURL = ruta;
+        }
 
-            dialogoImagen.InitialDirectory = "c://";
-            dialogoImagen.Filter = "Imágenes JPG (*.jpg)|*.jpg|Imágenes PNG (*.png)|*.png|Todos los archivos (*.*)|*.*";
+        void GuardarImagen()
+        {
+            string[] rutaSplit = ElementoSeleccionado.ImagenElementoURL.Split('\\');
 
-            dialogoImagen.FilterIndex = 3;
+            string nombreImgURL = rutaSplit[rutaSplit.Length - 1];
 
-            dialogoImagen.RestoreDirectory = true;
+            string blobStorageRuta = BlobStorage.guardarImagen(ElementoSeleccionado.ImagenElementoURL, nombreImgURL);
 
-            if (dialogoImagen.ShowDialog() == DialogResult.OK)
-            {
-                var ruta = string.Empty;
+            ElementoSeleccionado.ImagenElementoURL = blobStorageRuta;
 
-                ruta = dialogoImagen.FileName;
-                ElementoSeleccionado.ImagenElementoURL = ruta.ToString();
-            }
         }
 
     }

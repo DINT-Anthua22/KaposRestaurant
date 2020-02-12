@@ -35,6 +35,10 @@ namespace KaposRestaurant.ViewModel
         {
             if (!BbddService.HayElementosEnCategoria(categoriaSeleccionada))
             {
+                string[] urlBlob = categoriaSeleccionada.ImagenCategoriaURL.Split('/');
+
+                BlobStorage.eliminarImagen(urlBlob[urlBlob.Length-1]);
+
                 BbddService.DeleteCategoria(categoriaSeleccionada);
             }
         }

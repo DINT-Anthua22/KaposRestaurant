@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORIAS">
           <Key>
             <PropertyRef Name="IdCategoria" />
@@ -29,7 +29,7 @@
           <Property Name="Categoria" Type="int" Nullable="false" />
           <Property Name="NombreElemento" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Descripcion" Type="varchar(max)" />
-          <Property Name="ImagenElementoURL" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ImagenElementoURL" Type="varchar(max)" />
           <Property Name="Precio" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="FACTURA">
@@ -95,8 +95,7 @@
             <End Role="FACTURA" EntitySet="FACTURA" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -126,9 +125,9 @@
           <Property Name="Categoria" Type="Int32" Nullable="false" />
           <Property Name="NombreElemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImagenElementoURL" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ImagenElementoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Precio" Type="Double" Nullable="false" />
-          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK_ELEMENTOS_CATEGORIAS" FromRole="ELEMENTOS" ToRole="CATEGORIAS" />
+          <NavigationProperty Name="CATEGORIA_NAV" Relationship="Self.FK_ELEMENTOS_CATEGORIAS" FromRole="ELEMENTOS" ToRole="CATEGORIAS" />
           <NavigationProperty Name="FACTURAs" Relationship="Self.FK_FACTURA_ELEMENTOS" FromRole="ELEMENTOS" ToRole="FACTURA" />
         </EntityType>
         <EntityType Name="FACTURA">
