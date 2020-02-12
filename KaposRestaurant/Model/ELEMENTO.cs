@@ -27,7 +27,7 @@ namespace KaposRestaurant.Model
         public string ImagenElementoURL { get; set; }
         public double Precio { get; set; }
     
-        public virtual CATEGORIA CATEGORIA { get; set; }
+        public virtual CATEGORIA CATEGORIA_NAV { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FACTURA> FACTURAs { get; set; }
     }
