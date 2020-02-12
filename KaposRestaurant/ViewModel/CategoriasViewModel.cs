@@ -35,9 +35,12 @@ namespace KaposRestaurant.ViewModel
         {
             if (!BbddService.HayElementosEnCategoria(categoriaSeleccionada))
             {
-                string[] urlBlob = categoriaSeleccionada.ImagenCategoriaURL.Split('/');
+                if (categoriaSeleccionada.ImagenCategoriaURL != null && categoriaSeleccionada.ImagenCategoriaURL != "")
+                {
+                    string[] urlBlob = categoriaSeleccionada.ImagenCategoriaURL.Split('/');
 
-                BlobStorage.eliminarImagen(urlBlob[urlBlob.Length-1]);
+                    BlobStorage.eliminarImagen(urlBlob[urlBlob.Length - 1]);
+                }
 
                 BbddService.DeleteCategoria(categoriaSeleccionada);
             }
@@ -57,11 +60,14 @@ namespace KaposRestaurant.ViewModel
         {
             if (!BbddService.ExisteCategoria(nuevaCategoria))
             {
-                string[] rutaFichero = nuevaCategoria.ImagenCategoriaURL.Split('\\');
-                
-                string urlImagen = BlobStorage.guardarImagen(nuevaCategoria.ImagenCategoriaURL, rutaFichero[rutaFichero.Length-1]);
+                if(nuevaCategoria.ImagenCategoriaURL != null && nuevaCategoria.ImagenCategoriaURL != "")
+                {
+                    string[] rutaFichero = nuevaCategoria.ImagenCategoriaURL.Split('\\');
 
-                nuevaCategoria.ImagenCategoriaURL = urlImagen;
+                    string urlImagen = BlobStorage.guardarImagen(nuevaCategoria.ImagenCategoriaURL, rutaFichero[rutaFichero.Length - 1]);
+
+                    nuevaCategoria.ImagenCategoriaURL = urlImagen;
+                }
 
                 BbddService.AddCategoria(nuevaCategoria);
                 
