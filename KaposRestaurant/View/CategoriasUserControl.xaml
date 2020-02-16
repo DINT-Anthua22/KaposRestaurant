@@ -49,13 +49,13 @@
                 <DockPanel DockPanel.Dock="Top" Margin="50,0,50,0">
                     <TextBlock Margin="0,0,15,0">Imagen categoría</TextBlock>
                     <Button x:Name="SeleccionarImagenButton" DockPanel.Dock="Right" Margin="10,0,0,0" Padding="10,0,10,0" Click="SeleccionarImagenButton_Click">...</Button>
-                    <TextBox Text="{Binding nuevaCategoria.ImagenCategoriaURL, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox x:Name="SeleccionarImagenTextBox" Text="{Binding nuevaCategoria.ImagenCategoriaURL, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </DockPanel>
                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Margin="0,70,50,90">
                     <Button Padding="20,0,20,0" Margin="0,0,10,0" Command="ApplicationCommands.Save">Aceptar</Button>
                     <Button Padding="20,0,20,0" Margin="10,0,0,0" Command="comandos:ComandosPersonalizados.Clear">Vaciar</Button>
                 </StackPanel>
-                <Image DockPanel.Dock="Left" Margin="100,0,50,0" Source="{Binding categoriaSeleccionada.ImagenCategoriaURL}" Height="200" Width="200"></Image>
+                <Image DockPanel.Dock="Left" Margin="100,0,50,0" Source="{Binding ElementName=SeleccionarImagenTextBox, Path=Text}" Height="200" Width="200"></Image>
             </DockPanel>
         </GroupBox>
     </DockPanel>
