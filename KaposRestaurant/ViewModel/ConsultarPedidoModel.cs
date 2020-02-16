@@ -19,6 +19,8 @@ namespace KaposRestaurant.ViewModel
 
         public ObservableCollection<COMANDA> Comandas { get; set; }
 
+        private ObservableCollection<COMANDA> verificacion { get; set; }
+
         
 
         public double Precio { get; set; }
@@ -32,13 +34,17 @@ namespace KaposRestaurant.ViewModel
         private void ActualizarDataGrid()
         {
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(2);
+            timer.Interval = TimeSpan.FromSeconds(3);
             timer.Tick += TimerControlador;
             timer.Start();
         }
         private void TimerControlador(object sender, EventArgs e)
         {
-           Comandas = new ObservableCollection<COMANDA>(BbddService.GetComandas().OrderByDescending(x => x.IdComanda).ToList());
+           verificacion = new ObservableCollection<COMANDA>(BbddService.GetComandas().OrderByDescending(x => x.IdComanda).ToList());
+            if(Comandas.Count != verificacion.Count)
+            {
+                Comandas = verificacion;
+            }
 
         }
         public void Actualizar()
