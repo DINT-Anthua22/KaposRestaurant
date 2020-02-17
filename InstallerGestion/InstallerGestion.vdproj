@@ -21,8 +21,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1FBAA04FFC8D3C20D9EE009DC703082E"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3A06B181814AF333249477860A859E5C"
         "OwnerKey" = "8:_8542C494D9EE409B8CE3885C621AB122"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3A06B181814AF333249477860A859E5C"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -35,6 +47,12 @@
         {
         "MsmKey" = "8:_5BA047EBDA1C44396CCDF0CC219B0085"
         "OwnerKey" = "8:_8542C494D9EE409B8CE3885C621AB122"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BA047EBDA1C44396CCDF0CC219B0085"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,6 +70,12 @@
         "Entry"
         {
         "MsmKey" = "8:_96854B3B8362FFFDF3F64A5713336F93"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_96854B3B8362FFFDF3F64A5713336F93"
         "OwnerKey" = "8:_1FBAA04FFC8D3C20D9EE009DC703082E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -59,6 +83,12 @@
         {
         "MsmKey" = "8:_A022059DB68E249E62D7F211D66A8DED"
         "OwnerKey" = "8:_8542C494D9EE409B8CE3885C621AB122"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A022059DB68E249E62D7F211D66A8DED"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -75,8 +105,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C5339CA2C0C3053C34C380A789F0D726"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C783558D23DB5AFF7CFBA9D3B49B7D58"
         "OwnerKey" = "8:_8542C494D9EE409B8CE3885C621AB122"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C783558D23DB5AFF7CFBA9D3B49B7D58"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -87,14 +129,32 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D499B2543CAB3A9D148B7F499A4446E4"
         "OwnerKey" = "8:_8542C494D9EE409B8CE3885C621AB122"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_D499B2543CAB3A9D148B7F499A4446E4"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EA8FAAB78A8D68D35F6309D656DE4AAC"
         "OwnerKey" = "8:_8542C494D9EE409B8CE3885C621AB122"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EA8FAAB78A8D68D35F6309D656DE4AAC"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -107,6 +167,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D499B2543CAB3A9D148B7F499A4446E4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -734,21 +800,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_45B5EBD0D1674A86A9A7186CA9E98E17"
-            {
-            "Name" = "8:KaposRestaurant"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_8542C494D9EE409B8CE3885C621AB122"
-            "Folder" = "8:_5EDAB2CF63EF48C0BB75FB56CA8B2596"
-            "WorkingFolder" = "8:_35BC7060308E4FF8ACC405963CEF5C58"
-            "Icon" = "8:_52EDD8AF73DE4782A082C37CDA93B002"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C392E0277738431C9588CBD739BC15BC"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B923C51BF42A40749ED29B969C23E942"
             {
             "Name" = "8:Kapo's Restaurant"
             "Arguments" = "8:"
@@ -756,8 +808,22 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:"
+            "Target" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
             "Folder" = "8:_11EF604C11014B4287E25473C6B74F22"
+            "WorkingFolder" = "8:_35BC7060308E4FF8ACC405963CEF5C58"
+            "Icon" = "8:_52EDD8AF73DE4782A082C37CDA93B002"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E6847E62D5894BEB86656BCED3F69E84"
+            {
+            "Name" = "8:Kapo's Restaurant"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_D2FC561E537D465CBF94C6D9732F8B12"
+            "Folder" = "8:_5EDAB2CF63EF48C0BB75FB56CA8B2596"
             "WorkingFolder" = "8:_35BC7060308E4FF8ACC405963CEF5C58"
             "Icon" = "8:_52EDD8AF73DE4782A082C37CDA93B002"
             "Feature" = "8:"
@@ -1162,6 +1228,34 @@
         "ProjectOutput"
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8542C494D9EE409B8CE3885C621AB122"
+            {
+            "SourcePath" = "8:..\\KaposRestaurant\\obj\\Debug\\KaposRestaurant.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_35BC7060308E4FF8ACC405963CEF5C58"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:Release|Any CPU"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{28024F76-FD54-4120-B6DA-5C8095201AE0}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D2FC561E537D465CBF94C6D9732F8B12"
             {
             "SourcePath" = "8:..\\KaposRestaurant\\obj\\Debug\\KaposRestaurant.exe"
             "TargetName" = "8:"
