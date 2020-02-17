@@ -38,7 +38,7 @@
                 </Button>
             </StackPanel>
            
-            <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas, Mode=TwoWay}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid x:Name="ConsultarPedidosDataGrid" ItemsSource="{Binding Comandas, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding ComandaSeleccionada}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FechaComanda}" Width="600" IsReadOnly="True"/>
                     <DataGridCheckBoxColumn Header="Servida" Width="100" Binding="{Binding Servida, Mode=TwoWay}" />
